@@ -3,29 +3,24 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
 <div class="users index large-9 medium-8 columns content">
     <h3><?= __('Users') ?></h3>
+    <?= $this->Html->link(__('Ajouter un utilisateur'), ['action' => 'add'], array('class' => 'button')) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('username') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('firstname') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('lastname') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('mail') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('city') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('zip_code') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('address') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('address_add') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('phone') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('password') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('role') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('username', 'Pseudo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('firstname', 'Prénom') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('lastname', 'Nom') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('mail',  'Mail') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('city', 'Ville') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('zip_code', 'Code postal') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('address', 'Adresse') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('address_add', 'Complément d\'adresse') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('phone', 'Téléphone') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('password', 'Mot de passe') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('role', 'Rôle') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -45,9 +40,9 @@
                 <td><?= h($user->password) ?></td>
                 <td><?= $this->Number->format($user->role) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                    <?= $this->Html->link(__('Voir'), ['action' => 'view', $user->id]) ?>
+                    <?= $this->Html->link(__('Editer'), ['action' => 'edit', $user->id]) ?>
+                    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $user->id], ['confirm' => __('Êtes vous sur de vouloir supprimer : {0}?', $user->username)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -55,12 +50,12 @@
     </table>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->first('<< ' . __('premier')) ?>
+            <?= $this->Paginator->prev('< ' . __('précedent')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?= $this->Paginator->next(__('suivant') . ' >') ?>
+            <?= $this->Paginator->last(__('dernier') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} sur {{pages}}, affiche {{current}} élements sur {{count}} total')]) ?></p>
     </div>
 </div>
