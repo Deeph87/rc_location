@@ -84,13 +84,3 @@ Router::prefix('admin', function($routes){
 });
 
 Router::connect('/login', ['controller' => 'Users', 'action' => 'login']);
-<<<<<<< HEAD
-Router::connect('/', ['controller' => 'Users', 'action' => 'login']);
-=======
->>>>>>> 7af751a1b81238df47491071437529814e63d230
-
-/**
- * Load all plugin routes.  See the Plugin documentation on
- * how to customize the loading of plugin routes.
- */
-Plugin::routes();
