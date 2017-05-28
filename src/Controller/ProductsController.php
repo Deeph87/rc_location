@@ -27,6 +27,7 @@ class ProductsController extends AppController
         $this->set('_serialize', ['products']);
     }
 
+
     /**
      * View method
      *
