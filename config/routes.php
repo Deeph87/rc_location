@@ -49,7 +49,8 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $routes->connect('/', ['controller' => 'Products', 'action' => 'index', 'home']);
+    //$routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
@@ -81,7 +82,8 @@ Router::prefix('admin', function($routes){
     $routes->connect('/:controller/:action/*', ['controller' => 'controller', 'action' => 'action']);
 });
 
-
+Router::connect('/login', ['controller' => 'Users', 'action' => 'login']);
+Router::connect('/', ['controller' => 'Users', 'action' => 'login']);
 
 /**
  * Load all plugin routes.  See the Plugin documentation on
