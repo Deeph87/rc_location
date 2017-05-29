@@ -7,8 +7,8 @@ use Cake\ORM\Entity;
  * DetailsInvoice Entity
  *
  * @property int $id
- * @property \Cake\I18n\Time $date_start
- * @property \Cake\I18n\Time $date_end
+ * @property \Cake\I18n\FrozenTime $date_start
+ * @property \Cake\I18n\FrozenTime $date_end
  * @property int $users_id
  * @property int $products_id
  * @property int $invoices_id

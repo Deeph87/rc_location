@@ -44,7 +44,7 @@ class InvoicesFixture extends TestFixture
         [
             'id' => 1,
             'price' => 1,
-            'date' => '2017-04-26 15:22:04',
+            'date' => '2017-05-29 20:51:19',
             'users_id' => 1
         ],
     ];

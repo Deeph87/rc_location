@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property float $price
- * @property \Cake\I18n\Time $date
+ * @property \Cake\I18n\FrozenTime $date
  * @property int $users_id
  *
  * @property \App\Model\Entity\User $user

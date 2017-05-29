@@ -49,32 +49,29 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('username', 'create')
-            ->notEmpty('username', 'Un pseudo est nécessaire.');
+            ->notEmpty('username');
 
         $validator
             ->requirePresence('firstname', 'create')
-            ->notEmpty('firstname', 'Un prénom est nécessaire.');
+            ->notEmpty('firstname');
 
         $validator
             ->requirePresence('lastname', 'create')
-            ->notEmpty('lastname', 'Un nom est nécessaire.');
+            ->notEmpty('lastname');
 
         $validator
             ->requirePresence('mail', 'create')
-            ->notEmpty('mail', 'Une adresse mail est nécessaire.');
+            ->notEmpty('mail');
 
         $validator
-            ->requirePresence('city', 'create')
-            ->notEmpty('city', 'Un ville est nécessaire.');
+            ->allowEmpty('city');
 
         $validator
             ->integer('zip_code')
-            ->requirePresence('zip_code', 'create')
-            ->notEmpty('zip_code', 'Un code postal est nécessaire.');
+            ->allowEmpty('zip_code');
 
         $validator
-            ->requirePresence('address', 'create')
-            ->notEmpty('address', 'Une adresse est nécessaire.');
+            ->allowEmpty('address');
 
         $validator
             ->allowEmpty('address_add');
@@ -84,16 +81,11 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('password', 'create')
-            ->notEmpty('password', 'Un mot de passe est nécessaire.');
+            ->notEmpty('password');
 
         $validator
             ->integer('role')
-            ->requirePresence('role', 'create')
-            ->notEmpty('role', 'Un rôle est nécessaire.')
-            ->add('role', 'inList',
-                ['rule' => ['inList', [1, 2]],
-                'message' => 'Merci de rentrer un role valide',
-            ]);
+            ->allowEmpty('role');
 
         return $validator;
     }

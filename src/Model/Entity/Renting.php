@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $products_id
- * @property \Cake\I18n\Time $date_freeze_start
+ * @property \Cake\I18n\FrozenTime $date_freeze_start
  * @property int $date_freeze_end
  * @property string $reference
  * @property int $status
