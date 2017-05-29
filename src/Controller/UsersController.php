@@ -49,15 +49,20 @@ class UsersController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->setLayout('Front/default');
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => 'Default', 'action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('The user could not be saved. Please, try again.'), [
+                'params' => [
+                    'class' => 'alert alert-danger'
+                ]
+            ]);
         }
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
@@ -109,13 +114,18 @@ class UsersController extends AppController
     }
 
     public function login(){
+        $this->viewBuilder()->setLayout('Front/default');
            if($this->request->is('post')){
                $user = $this->Auth->identify();
                if ($user){
                    $this->Auth->setUser($user);
                    return $this->redirect($this->Auth->redirectUrl());
                }
-               $this->Flash->error(__('Utilisateur ou mot de passe incorecte.'));
+               $this->Flash->error(__('Utilisateur ou mot de passe incorecte.'), [
+                   'params' => [
+                       'class' => 'alert alert-danger'
+                   ]
+               ]);
            }
     }
 

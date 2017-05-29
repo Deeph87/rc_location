@@ -49,8 +49,8 @@ class DetailsInvoicesFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'date_start' => '2017-04-26 15:22:12',
-            'date_end' => '2017-04-26 15:22:12',
+            'date_start' => '2017-05-29 20:51:16',
+            'date_end' => '2017-05-29 20:51:16',
             'users_id' => 1,
             'products_id' => 1,
             'invoices_id' => 1

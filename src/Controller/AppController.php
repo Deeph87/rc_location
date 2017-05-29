@@ -47,13 +47,12 @@ class AppController extends Controller
 
         $this->loadComponent('Auth', [
             'loginRedirect' => [
-                'controller' => 'Products',
+                'controller' => 'Default',
                 'action' => 'index'
             ],
             'logoutRedirect' => [
-                'controller' => 'Pages',
-                'action' => 'display',
-                'home'
+                'controller' => 'Default',
+                'action' => 'index'
             ],
             'autorize' => 'Controller',
         ]);

@@ -84,3 +84,4 @@ Router::prefix('admin', function($routes){
 });
 
 Router::connect('/login', ['controller' => 'Users', 'action' => 'login']);
+Router::connect('/logout', ['controller' => 'Users', 'action' => 'logout']);

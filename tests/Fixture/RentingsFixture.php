@@ -46,7 +46,7 @@ class RentingsFixture extends TestFixture
         [
             'id' => 1,
             'products_id' => 1,
-            'date_freeze_start' => '2017-04-26 15:21:32',
+            'date_freeze_start' => '2017-05-29 20:51:23',
             'date_freeze_end' => 1,
             'reference' => 'Lorem ipsum dolor sit amet',
             'status' => 1
