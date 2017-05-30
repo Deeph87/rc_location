@@ -31,7 +31,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
+    <?= $this->Html->script('jquery-1.11.1.min') ?>
 </head>
 <body>
     <nav class="top-bar expanded" data-topbar role="navigation">
@@ -49,9 +49,24 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </nav>
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
+        <nav class="large-3 medium-4 columns" id="actions-sidebar">
+            <ul class="side-nav">
+                <li class="heading"><?= __('Actions') ?></li>
+                <li><?= $this->Html->link(__('Catégories'), ['controller' => 'Categories', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Produits'), ['controller' => 'Products', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Images'), ['controller' => 'Images', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Utilisateurs'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Factures'), ['controller' => 'Invoices', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Promotions'), ['controller' => 'Promotions', 'action' => 'index']) ?></li>
+            </ul>
+        </nav>
         <?= $this->fetch('content') ?>
     </div>
     <footer>
     </footer>
+    <?= $this->fetch('script') ?>
+    <?= $this->Html->script('custom') ?>
+
+
 </body>
 </html>

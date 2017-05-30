@@ -77,7 +77,7 @@ class ImagesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $image = $this->Images->patchEntity($image, $this->request->getData());
             if ($this->Images->save($image)) {
-                $this->Flash->success(__('The image has been saved.'));
+                $this->Flash->success(__('L\'image a bien été enregistré.'));
 
                 return $this->redirect(['action' => 'index']);
             }
@@ -99,7 +99,7 @@ class ImagesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $image = $this->Images->get($id);
         if ($this->Images->delete($image)) {
-            $this->Flash->success(__('The image has been deleted.'));
+            $this->Flash->success(__('L\'image a bien été supprimé.'));
         } else {
             $this->Flash->error(__('The image could not be deleted. Please, try again.'));
         }

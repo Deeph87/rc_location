@@ -1,7 +1,7 @@
 <?php
 /**
-  * @var \App\View\AppView $this
-  */
+ * @var \App\View\AppView $this
+ */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -10,11 +10,12 @@
     </ul>
 </nav>
 <div class="images form large-9 medium-8 columns content">
-    <?= $this->Form->create($image) ?>
+    <?= $this->Form->create($image, ['type' => 'file']) ?>
     <fieldset>
         <legend><?= __('Add Image') ?></legend>
         <?php
-            echo $this->Form->control('path');
+        echo $this->Form->input('path', ['type' => 'file']);
+        echo $this->Form->input('dir', ['type' => 'hidden']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
