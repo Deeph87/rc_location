@@ -41,7 +41,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <?php
     $is_connected = $this->request->session()->check('Auth.User');
     $current_user = $this->request->session()->read('Auth.User');
-    var_dump(\App\Model\Entity\User::ADMIN);
 ?>
 
 <div class="logo_products">
@@ -114,14 +113,24 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 </li>
                 <li>
                     <?php
-                        if($is_connected && $current_user['role'] == \App\Model\Entity\User::ADMIN) {
-                            ?>
-                            <i>/</i>
-                            <?php
-                            echo $this->Html->link(
-                                'Administration',
-                                ['controller' => 'Products', 'action' => 'index']
-                            );
+                        if($is_connected){
+                            if($current_user['role'] == \App\Model\Entity\User::ADMIN) {
+                                ?>
+                                <i>/</i>
+                                <?php
+                                echo $this->Html->link(
+                                    'Administration',
+                                    '/admin'
+                                );
+                            } elseif ($current_user['role'] == \App\Model\Entity\User::RENTER){
+                                ?>
+                                <i>/</i>
+                                <?php
+                                echo $this->Html->link(
+                                    'Panier',
+                                    '/panier/'.$current_user['id']
+                                );
+                            }
                         }
                     ?>
                 </li>
