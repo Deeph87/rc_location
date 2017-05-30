@@ -23,6 +23,9 @@ use Cake\Auth\DefaultPasswordHasher;
 class User extends Entity
 {
 
+    const ADMIN = 1;
+    const USER = 0;
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

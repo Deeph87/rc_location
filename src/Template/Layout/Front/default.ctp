@@ -38,7 +38,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body>
 
 <!-- header -->
-<?php $is_connected = $this->request->session()->check('Auth.User'); ?>
+<?php
+    $is_connected = $this->request->session()->check('Auth.User');
+    $current_user = $this->request->session()->read('Auth.User');
+    var_dump(\App\Model\Entity\User::ADMIN);
+?>
 
 <div class="logo_products">
     <div class="container">
@@ -104,6 +108,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                             echo $this->Html->link(
                                 'Logout',
                                 ['controller' => 'Users', 'action' => 'logout']
+                            );
+                        }
+                    ?>
+                </li>
+                <li>
+                    <?php
+                        if($is_connected && $current_user['role'] == \App\Model\Entity\User::ADMIN) {
+                            ?>
+                            <i>/</i>
+                            <?php
+                            echo $this->Html->link(
+                                'Administration',
+                                ['controller' => 'Products', 'action' => 'index']
                             );
                         }
                     ?>
