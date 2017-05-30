@@ -4,11 +4,12 @@
   */
 ?>
 <div class="images form large-9 medium-8 columns content">
-    <?= $this->Form->create($image) ?>
+    <?= $this->Form->create($image, ['type' => 'file']) ?>
     <fieldset>
         <legend><?= __('Edit Image') ?></legend>
         <?php
-            echo $this->Form->control('path');
+        echo $this->Form->input('path', ['type' => 'file']);
+        echo $this->Form->input('dir', ['type' => 'hidden']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

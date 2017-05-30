@@ -31,7 +31,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
+    <?= $this->Html->script('jquery-1.11.1.min') ?>
 </head>
 <body>
     <nav class="top-bar expanded" data-topbar role="navigation">
@@ -64,5 +64,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </div>
     <footer>
     </footer>
+    <?= $this->fetch('script') ?>
+    <?= $this->Html->script('custom') ?>
+
+
 </body>
 </html>

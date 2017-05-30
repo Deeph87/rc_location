@@ -31,8 +31,23 @@ class ImagesTable extends Table
         parent::initialize($config);
 
         $this->setTable('images');
-        $this->setDisplayField('id');
+        $this->setDisplayField('path');
         $this->setPrimaryKey('id');
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'path' => [
+                'keepFilesOnDelete' => false,
+                'path' => "webroot{DS}img{DS}upload{DS}",
+                'nameCallback' => 'filerename',
+                'fields' => [
+                    'dir' => 'dir',
+                ],
+            ],
+        ]);
+    }
+
+    public function filerename()
+    {
+        return date("Y_m_d H_i");
     }
 
     /**
