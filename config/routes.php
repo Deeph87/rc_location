@@ -82,6 +82,10 @@ Router::prefix('admin', function($routes){
     $routes->connect('/', ['controller' => 'Products', 'action' => 'index']);
     $routes->connect('/:controller/:action/*', ['controller' => 'controller', 'action' => 'action']);
 });
+Router::prefix('panier', function($routes){
+    $routes->connect('/:id', ['controller' => 'Paniers', 'action' => 'index'],['pass' => ['id']]);
+    $routes->connect('/:controller/:action/*', ['controller' => 'controller', 'action' => 'action']);
+});
 
 Router::connect('/login', ['controller' => 'Users', 'action' => 'login']);
 Router::connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
