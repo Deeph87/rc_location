@@ -81,17 +81,19 @@ class AppController extends Controller
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index', 'view', 'display']);
+        if(empty($this->request->getParam('prefix')) || $this->request->getParam('prefix') !== 'admin' || $this->request->getParam('prefix') !== 'panier'){
+            $this->Auth->allow(['index', 'view', 'display']);
+        }
     }
 
     public function isAuthorized($user = null){
         //Les utilisateurs enregistrés peuvent accéder aux fonction publiques
-        if (!$this->request->getParam('prefix')){
-            return true;
+        if ($this->request->getParam('prefix') === 'panier'){
+            return (bool)($user['role'] === '0');
         }
 
         //Les admins peuvent accéder aux fonctions privés
-        if ($this->request->getParam('prefix') === '1'){
+        if ($this->request->getParam('prefix') === 'admin'){
             return (bool)($user['role'] === '1');
         }
 
@@ -100,4 +102,6 @@ class AppController extends Controller
 
 
     }
+
+
 }
