@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="products form large-9 medium-8 columns content">
+<div class="products form large-10 medium-9 columns content">
     <?= $this->Form->create($product) ?>
     <fieldset>
         <legend><?= __('Edit Product') ?></legend>

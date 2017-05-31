@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="categories form large-9 medium-8 columns content">
+<div class="categories form large-10 medium-9 columns content">
     <?= $this->Form->create($category) ?>
     <fieldset>
         <legend><?= __('Edit Category') ?></legend>

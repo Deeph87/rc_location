@@ -3,7 +3,10 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="products view large-9 medium-8 columns content">
+<div class="products view large-10 medium-9 columns content">
+    <?= $this->Html->link(__('Ajouter stock'), ['controller' => 'rentings', 'action' => 'add', $product->id]) ?>
+    <?= $this->Html->link(__('Voir stock'), ['controller' => 'rentings', 'action' => 'index', $product->id]) ?>
+
     <h3><?= h($product->title) ?></h3>
     <table class="vertical-table">
         <tr>

@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="promotions view large-9 medium-8 columns content">
+<div class="promotions view large-10 medium-9 columns content">
     <h3><?= h($promotion->title) ?></h3>
     <table class="vertical-table">
         <tr>

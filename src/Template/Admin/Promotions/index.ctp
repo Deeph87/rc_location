@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="promotions index large-9 medium-8 columns content">
+<div class="promotions index large-10 medium-9 columns content">
     <h3><?= __('Promotions') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>

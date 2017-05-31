@@ -81,6 +81,9 @@ Router::scope('/', function (RouteBuilder $routes) {
 Router::prefix('admin', function($routes){
     $routes->connect('/', ['controller' => 'Products', 'action' => 'index']);
     $routes->connect('/:controller/:action/*', ['controller' => 'controller', 'action' => 'action']);
+    $routes->connect('/rentings/add/*', ['controller' => 'rentings', 'action' => 'add']);
+    $routes->connect('/rentings/:id', ['controller' => 'rentings', 'action' => 'index', 'id' => '\d+']);
+    $routes->connect('/rentings', ['controller' => 'rentings', 'action' => 'index']);
 });
 Router::prefix('panier', function($routes){
     $routes->connect('/:id', ['controller' => 'Paniers', 'action' => 'index'],['pass' => ['id']]);

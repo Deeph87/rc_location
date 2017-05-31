@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="images form large-9 medium-8 columns content">
+<div class="images form large-10 medium-9 columns content">
     <?= $this->Form->create($image, ['type' => 'file']) ?>
     <fieldset>
         <legend><?= __('Edit Image') ?></legend>

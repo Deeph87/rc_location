@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="rentings form large-9 medium-8 columns content">
+<div class="rentings form large-10 medium-9columns content">
     <?= $this->Form->create($renting) ?>
     <fieldset>
         <legend><?= __('Edit Renting') ?></legend>
