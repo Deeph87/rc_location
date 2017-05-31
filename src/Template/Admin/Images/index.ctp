@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="images index large-9 medium-8 columns content">
+<div class="images index large-10 medium-9 columns content">
     <h3><?= __('Images') ?></h3>
     <?= $this->Html->link(__('Ajouter une image'), ['action' => 'add'], array('class' => 'button')) ?>
     <table cellpadding="0" cellspacing="0">

@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="categories index large-9 medium-8 columns content">
+<div class="categories index large-10 medium-9 columns content">
     <h3><?= __('Catégories') ?></h3>
     <?= $this->Html->link(__('Ajouter une catégorie'), ['action' => 'add'], array('class' => 'button')) ?>
     <table cellpadding="0" cellspacing="0">

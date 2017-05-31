@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="invoices form large-9 medium-8 columns content">
+<div class="invoices form large-10 medium-9 columns content">
     <?= $this->Form->create($invoice) ?>
     <fieldset>
         <legend><?= __('Add Invoice') ?></legend>

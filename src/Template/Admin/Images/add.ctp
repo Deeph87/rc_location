@@ -9,7 +9,7 @@
         <li><?= $this->Html->link(__('List Images'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
-<div class="images form large-9 medium-8 columns content">
+<div class="images form large-10 medium-9 columns content">
     <?= $this->Form->create($image, ['type' => 'file']) ?>
     <fieldset>
         <legend><?= __('Add Image') ?></legend>

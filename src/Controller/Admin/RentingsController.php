@@ -16,13 +16,19 @@ class RentingsController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
+    public function index($id = null)
     {
         $this->paginate = [
             'contain' => ['Products']
         ];
-        $rentings = $this->paginate($this->Rentings);
 
+        if(empty($id)){
+            $rentings = $this->paginate($this->Rentings);
+        } else {
+            $query = $this->Rentings->find('all')->where(['products_id' => $id]);
+            $rentings = $this->paginate($query);
+            $this->set('id_product', $id);
+        }
         $this->set(compact('rentings'));
         $this->set('_serialize', ['rentings']);
     }
@@ -49,19 +55,23 @@ class RentingsController extends AppController
      *
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($id = null)
     {
         $renting = $this->Rentings->newEntity();
         if ($this->request->is('post')) {
             $renting = $this->Rentings->patchEntity($renting, $this->request->getData());
             if ($this->Rentings->save($renting)) {
-                $this->Flash->success(__('The renting has been saved.'));
+                $this->Flash->success(__('Le stock est bien enregistré.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The renting could not be saved. Please, try again.'));
+            $this->Flash->error(__('le stock ne peut pas être enregistré, veuillez réesayer ultèrieurement.'));
         }
-        $products = $this->Rentings->Products->find('list', ['limit' => 200]);
+        if (empty($id)){
+            $products = $this->Rentings->Products->find('list', ['limit' => 200]);
+        } else {
+            $products = $this->Rentings->Products->find('list', ['limit' => 200, 'conditions' => ['Products.id' => $id]]);
+        }
         $this->set(compact('renting', 'products'));
         $this->set('_serialize', ['renting']);
     }

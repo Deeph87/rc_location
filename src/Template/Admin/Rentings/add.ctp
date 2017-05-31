@@ -3,16 +3,19 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="rentings form large-9 medium-8 columns content">
+<div class="rentings form large-10 medium-9 columns content">
     <?= $this->Form->create($renting) ?>
     <fieldset>
         <legend><?= __('Add Renting') ?></legend>
         <?php
             echo $this->Form->control('products_id', ['options' => $products]);
-            echo $this->Form->control('date_freeze_start');
-            echo $this->Form->control('date_freeze_end');
+            echo $this->Form->control('date_freeze_start', ['empty' => true, 'required' => false, 'default' => '']);
+            echo $this->Form->control('date_freeze_end', ['empty' => true, 'required' => false]);
             echo $this->Form->control('reference');
-            echo $this->Form->control('status');
+            echo $this->Form->select(
+                'status',
+                [1 => 'Disponible', 0 => 'Non disponible']
+            );
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

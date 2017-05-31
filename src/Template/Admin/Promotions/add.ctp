@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="promotions form large-9 medium-8 columns content">
+<div class="promotions form large-10 medium-9 columns content">
     <?= $this->Form->create($promotion) ?>
     <fieldset>
         <legend><?= __('Add Promotion') ?></legend>

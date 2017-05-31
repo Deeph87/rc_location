@@ -4,3 +4,5 @@
 /logs/*
 /.idea/*
 composer.phar
+
+/webroot/img/upload/*

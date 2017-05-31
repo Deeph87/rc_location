@@ -57,12 +57,12 @@ class RentingsTable extends Table
         $validator
             ->dateTime('date_freeze_start')
             ->requirePresence('date_freeze_start', 'create')
-            ->notEmpty('date_freeze_start');
+            ->allowEmpty('date_freeze_start');
 
         $validator
-            ->integer('date_freeze_end')
+            ->dateTime('date_freeze_end')
             ->requirePresence('date_freeze_end', 'create')
-            ->notEmpty('date_freeze_end');
+            ->allowEmpty('date_freeze_end');
 
         $validator
             ->requirePresence('reference', 'create')

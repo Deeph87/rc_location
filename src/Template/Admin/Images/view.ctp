@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="images view large-9 medium-8 columns content">
+<div class="images view large-10 medium-9 columns content">
     <h3><?= h($image->id) ?></h3>
     <h3><?= $this->Html->image('upload/'.$image->path, ['alt' => 'Image '.$image->id, "class" => "image_view"]) ?></h3>
     <table class="vertical-table">

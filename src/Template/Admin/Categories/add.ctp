@@ -3,7 +3,7 @@
   * @var \App\View\AppView $this
   */
 ?>
-<div class="categories form large-9 medium-8 columns content">
+<div class="categories form large-10 medium-9 columns content">
     <?= $this->Form->create($category) ?>
     <fieldset>
         <legend><?= __('Ajouter une catégorie') ?></legend>
@@ -15,7 +15,7 @@
     <?= $this->Form->button(__('Envoyer')) ?>
     <?= $this->Form->end() ?>
 
-    <?= $this->Html->image('upload/491550.jpg', ['alt' => 'Image', 'class' => 'image_view']); ?>
+    <?= $this->Html->image('upload/_.png', ['alt' => 'Image', 'class' => 'image_view']); ?>
 
 </div>
 

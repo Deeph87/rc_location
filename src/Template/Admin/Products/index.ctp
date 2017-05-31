@@ -4,7 +4,7 @@
   */
 ?>
 
-<div class="products index large-9 medium-8 columns content">
+<div class="products index large-10 medium-9 columns content">
     <h3>Produits</h3>
     <?= $this->Html->link(__('Ajouter un produit'), ['action' => 'add'], array('class' => 'button')) ?>
     <table cellpadding="0" cellspacing="0">
