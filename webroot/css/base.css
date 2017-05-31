@@ -23,6 +23,29 @@ body {
 /* HTML5 display definitions
    ========================================================================== */
 
+/*STYLES PERSOS*/
+
+.section-title {
+    margin: 15px 0;
+}
+
+.form-container {
+    padding: 20px 0;
+}
+
+.image_cat_index {
+    width: 100px;
+}
+.image_cat_view {
+    width: 200px;
+}
+
+.image_view {
+    width: 300px;
+}
+
+/************************/
+
 /**
  * Correct `block` display not defined for any HTML5 element in IE 8/9.
  * Correct `block` display not defined for `details` or `summary` in IE 10/11

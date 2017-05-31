@@ -6,12 +6,12 @@
 <div class="categories form large-9 medium-8 columns content">
     <?= $this->Form->create($category) ?>
     <fieldset>
-        <legend><?= __('Edit Category') ?></legend>
+        <legend><?= __('Ajouter une catégorie') ?></legend>
         <?php
-            echo $this->Form->control('title');
-            echo $this->Form->control('images_id', ['options' => $images]);
+            echo $this->Form->control('title', ['label' => 'Titre']);
+            echo $this->Form->control('images_id', ['options' => $images, 'class' => 'image_select']);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Envoyer')) ?>
     <?= $this->Form->end() ?>
 </div>

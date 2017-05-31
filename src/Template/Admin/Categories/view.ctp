@@ -12,7 +12,15 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Image') ?></th>
-            <td><?= $category->has('image') ? $this->Html->link($category->image->id, ['controller' => 'Images', 'action' => 'view', $category->image->id]) : '' ?></td>
+            <td>
+                <?php
+                if($category->has('image')){
+                    ?>
+                    <a href="<?php echo $this->Url->build(['controller' => 'Images', 'action' => 'view', $category->image->id]); ?>"><?php echo $this->Html->image('upload/'.$category->image->path, ['alt' => 'Image '.$category->image->id, "class" => "image_cat_view"]); ?></a>
+                    <?php
+                }
+                ?>
+            </td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>

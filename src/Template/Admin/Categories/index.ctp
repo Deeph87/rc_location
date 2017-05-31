@@ -20,7 +20,15 @@
             <tr>
                 <td><?= $this->Number->format($category->id) ?></td>
                 <td><?= h($category->title) ?></td>
-                <td><?= $category->has('image') ? $this->Html->link($category->image->id, ['controller' => 'Images', 'action' => 'view', $category->image->id]) : '' ?></td>
+                <td>
+                    <?php
+                    if($category->has('image')){
+                        ?>
+                            <a href="<?php echo $this->Url->build(['controller' => 'Images', 'action' => 'view', $category->image->id]); ?>"><?php echo $this->Html->image('upload/'.$category->image->path, ['alt' => 'Image '.$category->image->id, "class" => "image_cat_index"]); ?></a>
+                        <?php
+                    }
+                    ?>
+                </td>
                 <td class="actions">
                     <?= $this->Html->link(__('Voir'), ['action' => 'view', $category->id]) ?>
                     <?= $this->Html->link(__('Editer'), ['action' => 'edit', $category->id]) ?>
