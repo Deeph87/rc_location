@@ -10,8 +10,8 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $date_start
  * @property \Cake\I18n\FrozenTime $date_end
  * @property int $users_id
- * @property int $products_id
  * @property int $invoices_id
+ * @property int $rentings_id
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Product $product

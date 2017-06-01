@@ -21,13 +21,14 @@
         </thead>
         <tbody>
             <?php foreach ($products as $product): ?>
+                <?php $etatLibelle = array('0' => 'Non Disponible', '1' => 'Disponible') ?>
             <tr>
                 <td><?= $this->Number->format($product->id) ?></td>
                 <td><?= h($product->title) ?></td>
                 <td><?= $this->Number->format($product->price) ?></td>
                 <td><?= $product->has('category') ? $this->Html->link($product->category->title, ['controller' => 'Categories', 'action' => 'view', $product->category->id]) : '' ?></td>
                 <td><?= $product->has('image') ? $this->Html->link($product->image->id, ['controller' => 'Images', 'action' => 'view', $product->image->id]) : '' ?></td>
-                <td><?= $this->Number->format($product->etat) ?></td>
+                <td><?= $etatLibelle[$this->Number->format($product->etat)] ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Voir'), ['action' => 'view', $product->id]) ?>
                     <?= $this->Html->link(__('Editer'), ['action' => 'edit', $product->id]) ?>

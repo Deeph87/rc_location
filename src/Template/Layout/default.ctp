@@ -59,6 +59,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li><?= $this->Html->link(__('Factures'), ['controller' => 'Invoices', 'action' => 'index']) ?></li>
                 <li><?= $this->Html->link(__('Promotions'), ['controller' => 'Promotions', 'action' => 'index']) ?></li>
                 <li><?= $this->Html->link(__('Stocks'), ['controller' => 'Rentings', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Détails des factures'), ['controller' => 'DetailsInvoices','action' => 'index']) ?> </li>
             </ul>
         </nav>
         <?= $this->fetch('content') ?>

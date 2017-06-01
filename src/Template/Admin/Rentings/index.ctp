@@ -29,13 +29,14 @@
         </thead>
         <tbody>
         <?php foreach ($rentings as $renting): ?>
+            <?php $etatLibelle = array('0' => 'Non Disponible', '1' => 'Disponible') ?>
             <tr>
                 <td><?= $this->Number->format($renting->id) ?></td>
                 <td><?= $renting->has('product') ? $this->Html->link($renting->product->title, ['controller' => 'Products', 'action' => 'view', $renting->product->id]) : '' ?></td>
                 <td><?= h($renting->date_freeze_start) ?></td>
                 <td><?= h($renting->date_freeze_end) ?></td>
                 <td><?= h($renting->reference) ?></td>
-                <td><?= $this->Number->format($renting->status) ?></td>
+                <td><?= $etatLibelle[$this->Number->format($renting->status)] ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Voir'), ['action' => 'view', $renting->id]) ?>
                     <?= $this->Html->link(__('Editer'), ['action' => 'edit', $renting->id]) ?>
