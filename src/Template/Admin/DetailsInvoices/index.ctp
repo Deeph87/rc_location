@@ -3,17 +3,20 @@
   * @var \App\View\AppView $this
   */
 ?>
+
 <div class="detailsInvoices index large-10 medium-9 columns content">
     <h3><?= __('Details Invoices') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('day_range') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('date_start') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('date_end') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('price') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('users_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('products_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('invoices_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('rentings_id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -21,11 +24,13 @@
             <?php foreach ($detailsInvoices as $detailsInvoice): ?>
             <tr>
                 <td><?= $this->Number->format($detailsInvoice->id) ?></td>
+                <td><?= $this->Number->format($detailsInvoice->day_range) ?></td>
                 <td><?= h($detailsInvoice->date_start) ?></td>
                 <td><?= h($detailsInvoice->date_end) ?></td>
+                <td><?= $this->Number->format($detailsInvoice->price) ?></td>
                 <td><?= $detailsInvoice->has('user') ? $this->Html->link($detailsInvoice->user->id, ['controller' => 'Users', 'action' => 'view', $detailsInvoice->user->id]) : '' ?></td>
-                <td><?= $detailsInvoice->has('product') ? $this->Html->link($detailsInvoice->product->title, ['controller' => 'Products', 'action' => 'view', $detailsInvoice->product->id]) : '' ?></td>
                 <td><?= $detailsInvoice->has('invoice') ? $this->Html->link($detailsInvoice->invoice->id, ['controller' => 'Invoices', 'action' => 'view', $detailsInvoice->invoice->id]) : '' ?></td>
+                <td><?= $detailsInvoice->has('renting') ? $this->Html->link($detailsInvoice->renting->id, ['controller' => 'Rentings', 'action' => 'view', $detailsInvoice->renting->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $detailsInvoice->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $detailsInvoice->id]) ?>

@@ -26,6 +26,7 @@
         </thead>
         <tbody>
             <?php foreach ($users as $user): ?>
+            <?php $roleLibelle = array('0' => 'Loueur', '1' => 'Administrateur') ?>
             <tr>
                 <td><?= $this->Number->format($user->id) ?></td>
                 <td><?= h($user->username) ?></td>
@@ -38,7 +39,7 @@
                 <td><?= h($user->address_add) ?></td>
                 <td><?= h($user->phone) ?></td>
                 <td><?= h($user->password) ?></td>
-                <td><?= $this->Number->format($user->role) ?></td>
+                <td><?= $roleLibelle[$this->Number->format($user->role)] ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Voir'), ['action' => 'view', $user->id]) ?>
                     <?= $this->Html->link(__('Editer'), ['action' => 'edit', $user->id]) ?>

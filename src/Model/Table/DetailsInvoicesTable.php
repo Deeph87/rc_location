@@ -10,8 +10,8 @@ use Cake\Validation\Validator;
  * DetailsInvoices Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Users
- * @property \Cake\ORM\Association\BelongsTo $Products
  * @property \Cake\ORM\Association\BelongsTo $Invoices
+ * @property \Cake\ORM\Association\BelongsTo $Rentings
  *
  * @method \App\Model\Entity\DetailsInvoice get($primaryKey, $options = [])
  * @method \App\Model\Entity\DetailsInvoice newEntity($data = null, array $options = [])
@@ -42,12 +42,12 @@ class DetailsInvoicesTable extends Table
             'foreignKey' => 'users_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Products', [
-            'foreignKey' => 'products_id',
-            'joinType' => 'INNER'
-        ]);
         $this->belongsTo('Invoices', [
             'foreignKey' => 'invoices_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Rentings', [
+            'foreignKey' => 'rentings_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -87,8 +87,8 @@ class DetailsInvoicesTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['users_id'], 'Users'));
-        $rules->add($rules->existsIn(['products_id'], 'Products'));
         $rules->add($rules->existsIn(['invoices_id'], 'Invoices'));
+        $rules->add($rules->existsIn(['rentings_id'], 'Rentings'));
 
         return $rules;
     }
