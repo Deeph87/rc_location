@@ -58,7 +58,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <?=
                         $this->Html->link(
                             'Home',
-                            ['controller' => 'Default', 'action' => 'index']
+                            ['controller' => 'Pages', 'action' => 'display']
                         );
                     ?>
                 </li>

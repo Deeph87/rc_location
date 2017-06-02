@@ -5,6 +5,7 @@
 ?>
 <div class="promotions index large-10 medium-9 columns content">
     <h3><?= __('Promotions') ?></h3>
+    <?= $this->Html->link(__('Ajouter une promotion'), ['action' => 'add'], array('class' => 'button')) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
