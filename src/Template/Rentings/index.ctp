@@ -29,7 +29,8 @@
                 <?php foreach ($rentings as $renting){ ?>
                     <tr>
                         <td><?= $renting->reference ?></td>
-                        <td><button class="button">Louer</button></td>
+                        <td><button class="button">Louer</button><input id="datetimepicker_start" type="text" >
+                            <input id="datetimepicker_end" type="text" ></td>
                     </tr>
                 <?php } ?>
                 </tbody>
@@ -38,9 +39,6 @@
     </div>
 </div>
 
-
-<input id="datetimepicker_start" type="text" >
-<input id="datetimepicker_end" type="text" >
 <?php $this->start('script') ?>
 
 <script>
