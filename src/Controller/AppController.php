@@ -57,7 +57,9 @@ class AppController extends Controller
             ]
         ]);
 
-        $this->Auth->config('authorize', ['Controller']);
+        $this->Auth->config('authorize', [
+            'Controller'
+        ]);
         /*
          * Enable the following components for recommended CakePHP security settings.
          * see http://book.cakephp.org/3.0/en/controllers/components/security.html
@@ -87,14 +89,15 @@ class AppController extends Controller
         $prefix = $this->request->getParam('prefix');
 
 //        debug($user_role);
-        debug(empty($this->request->getParam('prefix')));
-        debug($prefix !== 'admin' && $user_role !== User::ADMIN);
-        debug($prefix !== 'panier' && $user_role !== User::RENTER);
+//        debug(empty($this->request->getParam('prefix')));
+//        debug($prefix !== 'admin' && $user_role !== User::ADMIN);
+//        debug($prefix !== 'panier' && $user_role !== User::RENTER);
+//        debug($this->Auth->unauthorizedRedirect);
 //        debug(empty($this->request->getParam('prefix')));
 //        debug($this->request->getParam('prefix') !== 'admin');
 //        debug($this->request->getParam('prefix') !== 'panier');
         if(empty($prefix) || (!empty($user_role) && $prefix !== 'admin' && $user_role !== User::ADMIN) || (!empty($user_role) && $prefix !== 'panier' && $user_role !== User::RENTER)){
-            debug('pute');
+//            debug('pute');
             $this->Auth->allow(['index', 'view', 'display']);
         }
     }
