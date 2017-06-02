@@ -60,7 +60,7 @@ class PromotionsTable extends Table
         $validator
             ->integer('type')
             ->requirePresence('type', 'create')
-            ->notEmpty('type');
+            ->allowEmpty('type');
 
         $validator
             ->integer('status')
@@ -73,7 +73,7 @@ class PromotionsTable extends Table
             ->notEmpty('value');
 
         $validator
-            ->allowEmpty('code');
+            ->notEmpty('code');
 
         return $validator;
     }

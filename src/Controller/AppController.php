@@ -47,25 +47,18 @@ class AppController extends Controller
 
 
         $this->loadComponent('Auth', [
+            'loginAction' => '/login',
             'loginRedirect' => [
-                'controller' => 'Default',
+                'controller' => 'Pages',
                 'action' => 'index'
             ],
             'logoutRedirect' => [
-                'controller' => 'Default',
+                'controller' => 'Pages',
                 'action' => 'index'
-            ]
+            ],
+            'authorize' => 'Controller',
+            'unauthorizedRedirect' => $this->referer()
         ]);
-
-        $this->Auth->config('authorize', [
-            'Controller'
-        ]);
-        /*
-         * Enable the following components for recommended CakePHP security settings.
-         * see http://book.cakephp.org/3.0/en/controllers/components/security.html
-         */
-        //$this->loadComponent('Security');
-        //$this->loadComponent('Csrf');
     }
 
     /**
@@ -85,24 +78,11 @@ class AppController extends Controller
 
     public function beforeFilter(Event $event)
     {
-        $user_role = $this->Auth->user('role');
-        $prefix = $this->request->getParam('prefix');
-
-//        debug($user_role);
-//        debug(empty($this->request->getParam('prefix')));
-//        debug($prefix !== 'admin' && $user_role !== User::ADMIN);
-//        debug($prefix !== 'panier' && $user_role !== User::RENTER);
-//        debug($this->Auth->unauthorizedRedirect);
-//        debug(empty($this->request->getParam('prefix')));
-//        debug($this->request->getParam('prefix') !== 'admin');
-//        debug($this->request->getParam('prefix') !== 'panier');
-        if(empty($prefix) || (!empty($user_role) && $prefix !== 'admin' && $user_role !== User::ADMIN) || (!empty($user_role) && $prefix !== 'panier' && $user_role !== User::RENTER)){
-//            debug('pute');
-            $this->Auth->allow(['index', 'view', 'display']);
-        }
+        $this->Auth->allow(['display']);
     }
 
     public function isAuthorized($user = null){
+
         // Chacun des utilisateurs enregistrés peut accéder aux fonctions publiques
         if (!$this->request->getParam('prefix')) {
             return true;

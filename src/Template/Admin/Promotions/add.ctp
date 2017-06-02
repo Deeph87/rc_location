@@ -9,7 +9,7 @@
         <legend><?= __('Add Promotion') ?></legend>
         <?php
             echo $this->Form->control('title');
-            echo $this->Form->control('type');
+//            echo $this->Form->control('type');
             echo $this->Form->control('status');
             echo $this->Form->control('value');
             echo $this->Form->control('code');

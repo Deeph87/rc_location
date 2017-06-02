@@ -57,6 +57,8 @@ Router::scope('/', function (RouteBuilder $routes) {
      * ...and connect the rest of 'Pages' controller's URLs.
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+    $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
 
     /**
      * Connect catchall routes for all controllers.
@@ -89,6 +91,3 @@ Router::prefix('panier', function($routes){
     $routes->connect('/:id', ['controller' => 'Paniers', 'action' => 'index'],['pass' => ['id']]);
     $routes->connect('/:controller/:action/*', ['controller' => 'controller', 'action' => 'action']);
 });
-
-Router::connect('/login', ['controller' => 'Users', 'action' => 'login']);
-Router::connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
