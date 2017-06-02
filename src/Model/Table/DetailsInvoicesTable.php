@@ -65,14 +65,24 @@ class DetailsInvoicesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->dateTime('date_start')
+            ->integer('day_range')
+            ->requirePresence('day_range', 'create')
+            ->notEmpty('day_range');
+
+        $validator
+            ->date('date_start')
             ->requirePresence('date_start', 'create')
             ->notEmpty('date_start');
 
         $validator
-            ->dateTime('date_end')
+            ->date('date_end')
             ->requirePresence('date_end', 'create')
             ->notEmpty('date_end');
+
+        $validator
+            ->numeric('price')
+            ->requirePresence('price', 'create')
+            ->notEmpty('price');
 
         return $validator;
     }

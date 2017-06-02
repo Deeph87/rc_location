@@ -1,56 +1,70 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Renting'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Products'), ['controller' => 'Products', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Product'), ['controller' => 'Products', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="rentings index large-9 medium-8 columns content">
-    <h3><?= __('Rentings') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('products_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('date_freeze_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('date_freeze_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('reference') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('status') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($rentings as $renting): ?>
-            <tr>
-                <td><?= $this->Number->format($renting->id) ?></td>
-                <td><?= $renting->has('product') ? $this->Html->link($renting->product->title, ['controller' => 'Products', 'action' => 'view', $renting->product->id]) : '' ?></td>
-                <td><?= h($renting->date_freeze_start) ?></td>
-                <td><?= $this->Number->format($renting->date_freeze_end) ?></td>
-                <td><?= h($renting->reference) ?></td>
-                <td><?= $this->Number->format($renting->status) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $renting->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $renting->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $renting->id], ['confirm' => __('Are you sure you want to delete # {0}?', $renting->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+<div class="container">
+    <div class="agileinfo_single">
+        <h5><?= $product->title ?></h5>
+        <div class="col-md-4 agileinfo_single_left">
+            <?= $this->Html->image('upload/'.$product->image->path, ['class' => 'img-responsive', 'id' => 'example']) ?>
+        </div>
+        <div class="col-md-8 agileinfo_single_right">
+            <div class="w3agile_description">
+                <h4>Description :</h4>
+                <p><?= $product->description ?></p>
+            </div>
+            <div class="snipcart-item block">
+                <div class="snipcart-thumb agileinfo_single_right_snipcart">
+                    <h4><?= $product->price ?> €</h4>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="rentings_list">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Références</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <?php foreach ($rentings as $renting){ ?>
+                    <tr>
+                        <td><?= $renting->reference ?></td>
+                        <td><button class="button">Louer</button><input id="datetimepicker_start" type="text" >
+                            <input id="datetimepicker_end" type="text" ></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+
+<?php $this->start('script') ?>
+
+<script>
+
+    dates_disabled = ['2017/06/01', '2017/06/02', '2017/06/03', '2017/06/04', '2017/06/05'];
+
+    jQuery('#datetimepicker_start').datetimepicker({
+        format:'Y/m/d',
+        disabledDates: dates_disabled,
+        onShow:function( ct ){
+            this.setOptions({
+                maxDate:jQuery('#datetimepicker_end').val()?jQuery('#datetimepicker_end').val():false
+            })
+        },
+        timepicker:false
+    });
+    jQuery('#datetimepicker_end').datetimepicker({
+        format:'Y/m/d',
+        onShow:function( ct ){
+            this.setOptions({
+                minDate:jQuery('#datetimepicker_start').val()?jQuery('#datetimepicker_start').val():false
+            })
+        },
+        timepicker:false
+    });
+
+</script>
+
+<?php $this->end() ?>

@@ -30,6 +30,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('flexslider') ?>
     <?= $this->Html->css('font-awesome') ?>
     <?= $this->Html->css('style') ?>
+    <?= $this->Html->css('jquery.datetimepicker') ?>
+    <?= $this->Html->script('jquery-1.11.1.min') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -47,8 +49,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <div class="container">
         <div class="w3ls_logo_products_left">
             <h1><a href="<?php echo $this->Url->build([
-                    'controller' => 'Default',
-                    'action' => 'index'
+                    'controller' => 'Pages',
+                    'action' => 'display'
                 ]); ?>"><span>RC</span> Location</a>
             </h1>
         </div>
@@ -58,7 +60,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <?=
                         $this->Html->link(
                             'Home',
-                            ['controller' => 'Default', 'action' => 'index']
+                            ['controller' => 'Pages', 'action' => 'display']
                         );
                     ?>
                 </li>
@@ -164,13 +166,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <!--    </div>-->
 <!--</div>-->
 <!-- //footer -->
-
+    <?= $this->Html->script('custom') ?>
     <?= $this->Html->script('bootstrap.min') ?>
+    <?= $this->Html->script('jquery.datetimepicker.min') ?>
     <?= $this->Html->script('counterup.min') ?>
     <?= $this->Html->script('easing') ?>
     <?= $this->Html->script('jquery.flexslider') ?>
     <?= $this->Html->script('jquery.wmuSlider') ?>
-    <?= $this->Html->script('jquery-1.11.1.min') ?>
+
     <?= $this->Html->script('minicart.min') ?>
     <?= $this->Html->script('move-top') ?>
     <?= $this->Html->script('okzoom') ?>
