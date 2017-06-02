@@ -21,7 +21,7 @@ class DetailsInvoicesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users', 'Products', 'Invoices']
+            'contain' => ['Users', 'Invoices', 'Rentings']
         ];
         $detailsInvoices = $this->paginate($this->DetailsInvoices);
 
@@ -39,7 +39,7 @@ class DetailsInvoicesController extends AppController
     public function view($id = null)
     {
         $detailsInvoice = $this->DetailsInvoices->get($id, [
-            'contain' => ['Users', 'Products', 'Invoices']
+            'contain' => ['Users', 'Invoices', 'Rentings']
         ]);
 
         $this->set('detailsInvoice', $detailsInvoice);
@@ -64,9 +64,9 @@ class DetailsInvoicesController extends AppController
             $this->Flash->error(__('The details invoice could not be saved. Please, try again.'));
         }
         $users = $this->DetailsInvoices->Users->find('list', ['limit' => 200]);
-        $products = $this->DetailsInvoices->Products->find('list', ['limit' => 200]);
         $invoices = $this->DetailsInvoices->Invoices->find('list', ['limit' => 200]);
-        $this->set(compact('detailsInvoice', 'users', 'products', 'invoices'));
+        $rentings = $this->DetailsInvoices->Rentings->find('list', ['limit' => 200]);
+        $this->set(compact('detailsInvoice', 'users', 'invoices', 'rentings'));
         $this->set('_serialize', ['detailsInvoice']);
     }
 
@@ -92,9 +92,9 @@ class DetailsInvoicesController extends AppController
             $this->Flash->error(__('The details invoice could not be saved. Please, try again.'));
         }
         $users = $this->DetailsInvoices->Users->find('list', ['limit' => 200]);
-        $products = $this->DetailsInvoices->Products->find('list', ['limit' => 200]);
         $invoices = $this->DetailsInvoices->Invoices->find('list', ['limit' => 200]);
-        $this->set(compact('detailsInvoice', 'users', 'products', 'invoices'));
+        $rentings = $this->DetailsInvoices->Rentings->find('list', ['limit' => 200]);
+        $this->set(compact('detailsInvoice', 'users', 'invoices', 'rentings'));
         $this->set('_serialize', ['detailsInvoice']);
     }
 

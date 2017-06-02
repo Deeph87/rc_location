@@ -17,25 +17,20 @@
                                     <figure>
                                         <div class="snipcart-item block" >
                                             <div class="snipcart-thumb">
-                                                <a href="single.html"><?php echo $this->Html->image('upload/'.$datas->image->path, ['alt' => 'Image '.$datas->id, "class" => "image_index"]); ?></a>
+                                                <a href="<?= $this->Url->build([
+                                                    'controller' => 'Rentings',
+                                                    'action' => 'index',
+                                                    $datas->id
+                                                ]) ?>"><?php echo $this->Html->image('upload/'.$datas->image->path, ['alt' => 'Image '.$datas->id, "class" => "image_index"]); ?></a>
                                                 <p><?php echo $datas->title.' : '.$datas->description; ?></p>
                                                 <h4><?php echo $datas->price.' € / jour'; ?></h4>
                                             </div>
                                             <div class="snipcart-details top_brand_home_details">
-                                                <form action="#" method="post">
-                                                    <fieldset>
-                                                        <input type="hidden" name="cmd" value="_cart" />
-                                                        <input type="hidden" name="add" value="1" />
-                                                        <input type="hidden" name="business" value=" " />
-                                                        <input type="hidden" name="item_name" value="Fortune Sunflower Oil" />
-                                                        <input type="hidden" name="amount" value="7.99" />
-                                                        <input type="hidden" name="discount_amount" value="1.00" />
-                                                        <input type="hidden" name="currency_code" value="USD" />
-                                                        <input type="hidden" name="return" value=" " />
-                                                        <input type="hidden" name="cancel_return" value=" " />
-                                                        <input type="submit" name="submit" value="Add to cart" class="button" />
-                                                    </fieldset>
-                                                </form>
+                                                <a href="<?= $this->Url->build([
+                                                    'controller' => 'Rentings',
+                                                    'action' => 'index',
+                                                    $datas->id
+                                                ]) ?>"><button class="button">Voir</button></a>
                                             </div>
                                         </div>
                                     </figure>

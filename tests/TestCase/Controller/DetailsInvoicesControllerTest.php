@@ -18,10 +18,11 @@ class DetailsInvoicesControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.details_invoices',
         'app.users',
+        'app.invoices',
+        'app.rentings',
         'app.products',
         'app.categories',
-        'app.images',
-        'app.invoices'
+        'app.images'
     ];
 
     /**

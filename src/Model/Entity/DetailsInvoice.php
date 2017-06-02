@@ -7,15 +7,17 @@ use Cake\ORM\Entity;
  * DetailsInvoice Entity
  *
  * @property int $id
- * @property \Cake\I18n\FrozenTime $date_start
- * @property \Cake\I18n\FrozenTime $date_end
+ * @property int $day_range
+ * @property \Cake\I18n\FrozenDate $date_start
+ * @property \Cake\I18n\FrozenDate $date_end
+ * @property float $price
  * @property int $users_id
  * @property int $invoices_id
  * @property int $rentings_id
  *
  * @property \App\Model\Entity\User $user
- * @property \App\Model\Entity\Product $product
  * @property \App\Model\Entity\Invoice $invoice
+ * @property \App\Model\Entity\Renting $renting
  */
 class DetailsInvoice extends Entity
 {
