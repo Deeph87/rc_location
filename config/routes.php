@@ -52,6 +52,8 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
     $routes->connect('/panier/creation', ['controller' => 'panier', 'action' => 'creation']);
+    $routes->connect('/panier/add', ['controller' => 'panier', 'action' => 'add']);
+    $routes->connect('/panier', ['controller' => 'panier', 'action' => 'view']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
@@ -88,6 +90,7 @@ Router::prefix('admin', function($routes){
     $routes->connect('/rentings', ['controller' => 'rentings', 'action' => 'index']);
 });
 Router::prefix('panier', function($routes){
-    $routes->connect('/:id', ['controller' => 'Paniers', 'action' => 'index'],['pass' => ['id']]);
+    $routes->connect('/:id', ['controller' => 'Paniers', 'action' => 'index', 'id' => '\d+']);
+    $routes->connect('/add', ['controller' => 'panier', 'action' => 'add']);
     $routes->connect('/:controller/:action/*', ['controller' => 'controller', 'action' => 'action']);
 });
