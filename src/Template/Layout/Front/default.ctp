@@ -130,10 +130,25 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                 <?php
                                 echo $this->Html->link(
                                     'Panier',
-                                    '/panier/'.$current_user['id']
+                                    '/panier'
                                 );
                             }
                         }
+                    ?>
+                </li>
+                <li>
+                    <?php
+                    if($is_connected){
+                        if ($current_user['role'] == \App\Model\Entity\User::RENTER){
+                            ?>
+                            <i>/</i>
+                            <?php
+                            echo $this->Html->link(
+                                'Espace perso',
+                                '/personnal'
+                            );
+                        }
+                    }
                     ?>
                 </li>
             </ul>
