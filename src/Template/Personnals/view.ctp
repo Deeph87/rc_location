@@ -16,6 +16,7 @@
             <tbody>
             <?php
                 $total_price = 0;
+                $total_price_promo = 0;
                 if(!empty($details_invoices_per_renter)) {
                     foreach ($details_invoices_per_renter as $detail) {
 
@@ -30,6 +31,7 @@
                                 <td><?php echo $result = $detail['_matchingData']['Rentings']->status == 0 ? '<span class="label label-danger">Terminé</span>' : '<span class="label label-success">En cours</span>' ?></td>
                             </tr>
                         <?php
+//                        debug($detail);
                         $total_price += $detail->price;
                     }
                 }
@@ -43,6 +45,20 @@
                 <td></td>
                 <td></td>
                 <th><?php echo $total_price.' €'; ?></th>
+            </tr>
+            <tr>
+                <th>TOTAL AVEC PROMO</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th>
+                    <?php
+                        foreach ($invoice_per_renter as $invoice){
+                            echo $invoice->sum.' €';
+                        }
+                    ?>
+                </th>
             </tr>
             </tfoot>
         </table>
