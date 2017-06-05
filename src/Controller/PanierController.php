@@ -55,7 +55,9 @@ class PanierController extends AppController
     {
 
         $session = $this->request->session();
-        if ($this->request->is('post')) {
+
+        //Supression d'un article
+        if ($this->request->is('post') && $this->request->getData('delete')) {
             $session->delete('panier.'.$this->request->getData('delete'));
             return $this->redirect(
                 ['controller' => 'Panier', 'action' => 'view']
@@ -63,8 +65,26 @@ class PanierController extends AppController
         }
 
 
-        $panierSession = $session->read('panier');
+        //Code promo
+        if ($this->request->is('post') && $this->request->getData('promo')) {
 
+            $promotionsTable = TableRegistry::get('Promotions');
+            $promotions = $promotionsTable
+                ->find()
+                ->where(['code =' => $this->request->getData('promo')]);
+
+            if (!$promotions->isEmpty()){
+                $promotion = $promotions->first();
+                $promo = array('code' => $this->request->getData('promo'), 'valeur' => $promotion->get('value'), 'type' => $promotion->get('type'));
+                $session->write('promo', $promo);
+            }
+            return $this->redirect(
+                ['controller' => 'Panier', 'action' => 'view']
+            );
+        }
+
+
+        $panierSession = $session->read('panier');
 
         $panier = array();
 
@@ -80,9 +100,18 @@ class PanierController extends AppController
         } else {
             $liste = false;
         }
+
+        $promoSession = $session->read('promo');
+        if (!empty($promoSession)){
+            $promo = $promoSession;
+        } else {
+            $promo = false;
+        }
+
         $this->viewBuilder()->setLayout('Front/default');
         $this->set('liste', $liste);
         $this->set('panier', $panierSession);
+        $this->set('promo', $promo);
         $this->set('_serialize', ['liste']);
 
     }
@@ -121,6 +150,18 @@ class PanierController extends AppController
                 $total_price = $total_price + ($query->product->price * $days);
             }
 
+            //promotions
+            $promo = $session->read('promo');
+            if (!empty($promo)) {
+                switch ($promo['type']) {
+                    case 0:
+                        $total_price = $total_price - $promo['valeur'];
+                        break;
+                    case 1:
+                        $total_price = $total_price * (1 - ($promo['valeur'] / 100));
+                        break;
+                }
+            }
             $user_id = $this->Auth->user('id');
             $invoicesTable = TableRegistry::get('Invoices');
             $invoices = $invoicesTable->newEntity();
@@ -145,7 +186,9 @@ class PanierController extends AppController
                     $detailsInvoice->renting = $rentings;
                     $detailsInvoice->invoice = $invoices;
                     if (!$detailsInvoiceTable->save($detailsInvoice))$etat = false;
+                    $this->viewBuilder()->setLayout('Front/default');
                     $session->delete('panier');
+                    $session->delete('promo');
                 }
             } else {
                 $etat = false;
@@ -156,4 +199,5 @@ class PanierController extends AppController
         $this->set('etat', $etat);
 
     }
+    
 }

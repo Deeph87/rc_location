@@ -7,6 +7,8 @@ use App\Controller\AppController;
  * Promotions Controller
  *
  * @property \App\Model\Table\PromotionsTable $Promotions
+ *
+ * @method \App\Model\Entity\Promotion[] paginate($object = null, array $settings = [])
  */
 class PromotionsController extends AppController
 {
@@ -14,13 +16,10 @@ class PromotionsController extends AppController
     /**
      * Index method
      *
-     * @return \Cake\Network\Response|null
+     * @return \Cake\Http\Response|null
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Products']
-        ];
         $promotions = $this->paginate($this->Promotions);
 
         $this->set(compact('promotions'));
@@ -31,13 +30,13 @@ class PromotionsController extends AppController
      * View method
      *
      * @param string|null $id Promotion id.
-     * @return \Cake\Network\Response|null
+     * @return \Cake\Http\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
     {
         $promotion = $this->Promotions->get($id, [
-            'contain' => ['Products']
+            'contain' => []
         ]);
 
         $this->set('promotion', $promotion);
@@ -47,7 +46,7 @@ class PromotionsController extends AppController
     /**
      * Add method
      *
-     * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
@@ -61,8 +60,7 @@ class PromotionsController extends AppController
             }
             $this->Flash->error(__('The promotion could not be saved. Please, try again.'));
         }
-        $products = $this->Promotions->Products->find('list', ['limit' => 200]);
-        $this->set(compact('promotion', 'products'));
+        $this->set(compact('promotion'));
         $this->set('_serialize', ['promotion']);
     }
 
@@ -70,7 +68,7 @@ class PromotionsController extends AppController
      * Edit method
      *
      * @param string|null $id Promotion id.
-     * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
@@ -87,8 +85,7 @@ class PromotionsController extends AppController
             }
             $this->Flash->error(__('The promotion could not be saved. Please, try again.'));
         }
-        $products = $this->Promotions->Products->find('list', ['limit' => 200]);
-        $this->set(compact('promotion', 'products'));
+        $this->set(compact('promotion'));
         $this->set('_serialize', ['promotion']);
     }
 
@@ -96,7 +93,7 @@ class PromotionsController extends AppController
      * Delete method
      *
      * @param string|null $id Promotion id.
-     * @return \Cake\Network\Response|null Redirects to index.
+     * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)

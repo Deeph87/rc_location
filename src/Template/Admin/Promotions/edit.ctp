@@ -9,11 +9,10 @@
         <legend><?= __('Edit Promotion') ?></legend>
         <?php
             echo $this->Form->control('title');
-            echo $this->Form->control('type');
             echo $this->Form->control('status');
             echo $this->Form->control('value');
             echo $this->Form->control('code');
-            echo $this->Form->control('products_id', ['options' => $products, 'empty' => true]);
+            echo $this->Form->control('type');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

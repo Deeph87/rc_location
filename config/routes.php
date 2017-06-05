@@ -93,5 +93,5 @@ Router::prefix('admin', function($routes){
 Router::prefix('panier', function($routes){
     $routes->connect('/:id', ['controller' => 'Paniers', 'action' => 'index', 'id' => '\d+']);
     $routes->connect('/add', ['controller' => 'panier', 'action' => 'add']);
-    $routes->connect('/:controller/:action/*', ['controller' => 'controller', 'action' => 'action']);
+    $routes->connect('/:action/*', ['controller' => 'controller', 'action' => 'action']);
 });

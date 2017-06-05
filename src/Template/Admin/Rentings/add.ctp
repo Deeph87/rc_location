@@ -8,7 +8,7 @@
     <fieldset>
         <legend><?= __('Ajouter un stock') ?></legend>
         <?php
-            echo $this->Form->control('products_id', ['options' => $products, 'label' => 'Produit']);
+            echo $this->Form->control('products_id', ['options' => $products, 'label' => 'Produit', 'required' => true]);
             echo $this->Form->control('date_freeze_start', ['empty' => true, 'required' => false, 'default' => '', 'label' => 'Date gèle début']);
             echo $this->Form->control('date_freeze_end', ['empty' => true, 'required' => false, 'label' => 'Date gèle fin']);
             echo $this->Form->control('reference', ['label' => 'Réference']);

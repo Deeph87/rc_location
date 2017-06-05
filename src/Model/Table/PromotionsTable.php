@@ -9,8 +9,6 @@ use Cake\Validation\Validator;
 /**
  * Promotions Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Products
- *
  * @method \App\Model\Entity\Promotion get($primaryKey, $options = [])
  * @method \App\Model\Entity\Promotion newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Promotion[] newEntities(array $data, array $options = [])
@@ -35,10 +33,6 @@ class PromotionsTable extends Table
         $this->setTable('promotions');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
-
-        $this->belongsTo('Products', [
-            'foreignKey' => 'products_id'
-        ]);
     }
 
     /**
@@ -58,11 +52,6 @@ class PromotionsTable extends Table
             ->notEmpty('title');
 
         $validator
-            ->integer('type')
-            ->requirePresence('type', 'create')
-            ->allowEmpty('type');
-
-        $validator
             ->integer('status')
             ->requirePresence('status', 'create')
             ->notEmpty('status');
@@ -73,22 +62,14 @@ class PromotionsTable extends Table
             ->notEmpty('value');
 
         $validator
+            ->requirePresence('code', 'create')
             ->notEmpty('code');
 
+        $validator
+            ->integer('type')
+            ->requirePresence('type', 'create')
+            ->notEmpty('type');
+
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['products_id'], 'Products'));
-
-        return $rules;
     }
 }

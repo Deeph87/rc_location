@@ -30,7 +30,7 @@
                 <td><?= $product->has('image') ? $this->Html->link($product->image->id, ['controller' => 'Images', 'action' => 'view', $product->image->id]) : '' ?></td>
                 <td><?= $etatLibelle[$this->Number->format($product->etat)] ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Voir'), ['action' => 'view', $product->id]) ?>
+                    <?= $this->Html->link(__('Stocks'), ['controller' => 'rentings', 'action' => 'index', $product->id]) ?>
                     <?= $this->Html->link(__('Editer'), ['action' => 'edit', $product->id]) ?>
                     <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $product->id], ['confirm' => __('Êtes vous sur de vouloir supprimer # {0}?', $product->id)]) ?>
                 </td>

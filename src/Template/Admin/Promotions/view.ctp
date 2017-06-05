@@ -15,16 +15,8 @@
             <td><?= h($promotion->code) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Product') ?></th>
-            <td><?= $promotion->has('product') ? $this->Html->link($promotion->product->title, ['controller' => 'Products', 'action' => 'view', $promotion->product->id]) : '' ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($promotion->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Type') ?></th>
-            <td><?= $this->Number->format($promotion->type) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Status') ?></th>
@@ -33,6 +25,10 @@
         <tr>
             <th scope="row"><?= __('Value') ?></th>
             <td><?= $this->Number->format($promotion->value) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Type') ?></th>
+            <td><?= $this->Number->format($promotion->type) ?></td>
         </tr>
     </table>
 </div>
