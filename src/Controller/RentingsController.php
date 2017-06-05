@@ -49,7 +49,7 @@ class RentingsController extends AppController
             $rentings_id = $this->request->getData('id');
 
             $detailsInvoices = $detailsInvoicesTable->find()
-                ->where(['detailsInvoices.rentings_id' => $rentings_id])
+                ->where(['DetailsInvoices.rentings_id' => $rentings_id])
                 ->contain(['Rentings']);
 
             $dates = array();
