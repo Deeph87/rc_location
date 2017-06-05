@@ -14,7 +14,7 @@
             echo $this->Form->label('Type');
             echo $this->Form->select(
                 'type',
-                [0 => 'Soustraction', 1 => 'Non disponible']
+                [0 => 'Soustraction', 1 => 'Pourcentage']
             );
             echo $this->Form->label('status', 'Etat');
             echo $this->Form->select(
