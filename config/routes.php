@@ -54,6 +54,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/panier/creation', ['controller' => 'panier', 'action' => 'creation']);
     $routes->connect('/panier/add', ['controller' => 'panier', 'action' => 'add']);
     $routes->connect('/panier', ['controller' => 'panier', 'action' => 'view']);
+    $routes->connect('/personnal', ['controller' => 'personnals', 'action' => 'view']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
