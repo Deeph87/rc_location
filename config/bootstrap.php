@@ -221,6 +221,7 @@ if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
 
-
+Cake\I18n\FrozenDate::setToStringFormat('yyyy-MM-dd');
+Cake\I18n\FrozenTime::setToStringFormat('yyyy-MM-dd HH:mm:ss');
 
 Plugin::load('Josegonzalez/Upload');

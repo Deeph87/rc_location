@@ -1,5 +1,5 @@
-<?php if ($liste !== false){ ?>
-    <div class="container">
+<div class="container">
+    <?php if ($liste !== false){ ?>
         <table class="table">
             <thead>
             <tr>
@@ -56,25 +56,50 @@
             </tbody>
             <tfoot>
             <tr>
+                <td><?php if ($promo !== false)echo 'Code promo' ?></td>
+                <td><?php if ($promo !== false)echo $promo['code'] ?></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                    <?php
+                    if ($promo !== false){
+                        switch ($promo['type']){
+                            case 0:
+                                $totals = $totals - $promo['valeur'];
+                                echo '- '.$promo['valeur'].' €';
+                                break;
+                            case 1:
+                                $totals = $totals * (1-($promo['valeur']/100));
+                                echo $promo['valeur'].'%';
+                                break;
+                            default:
+                                echo $promo['valeur'];
+                        }
+                    }
+                    ?>
+                </td>
                 <td><?= $totals ?> €</td>
                 <td></td>
             </tr>
             </tfoot>
         </table>
+        <form method="post">
+            <input type="text" value="" name="promo" id="promo" placeholder="Code promo">
+            <button type="submit" class="btn btn-primary btn-sm">
+                Valider
+            </button>
+        </form>
         <form action="<?= $this->Url->build(['controller' => 'Panier', 'action' => 'creation']) ?>" method="post">
             <button type="submit" class="btn btn-primary btn-sm">
                 Valider la commande
             </button>
         </form>
-    </div>
-<?php } else { ?>
 
-    <p>Le panier est vide</p>
+    <?php } else { ?>
 
-<?php }
+        <p>Le panier est vide</p>
+
+    <?php } ?>
+
+</div>

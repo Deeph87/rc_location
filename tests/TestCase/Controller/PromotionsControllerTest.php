@@ -16,10 +16,7 @@ class PromotionsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.promotions',
-        'app.products',
-        'app.categories',
-        'app.images'
+        'app.promotions'
     ];
 
     /**

@@ -8,11 +8,10 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $title
- * @property int $type
  * @property int $status
  * @property int $value
  * @property string $code
- * @property int $products_id
+ * @property int $type
  *
  * @property \App\Model\Entity\Product $product
  */

@@ -51,7 +51,7 @@ class PagesController extends AppController
             $cat_id = $cat->get('id');
             $cat_name = $cat->get('title');
             $products = $this->Products->find('all', [
-                'conditions' => ['Products.categories_id' => $cat_id],
+                'conditions' => ['Products.categories_id' => $cat_id, 'Products.etat' => 1],
                 'contain' => ['Images']
             ]);
 

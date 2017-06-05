@@ -40,7 +40,6 @@
         </div>
     </div>
 </div>
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -83,28 +82,53 @@
 
 
     $('.btn-louer').on('click', function () {
-        dates_disabled = ['2017/06/01', '2017/06/02', '2017/06/03', '2017/06/04', '2017/06/05'];
-        jQuery('input[id=datetimepicker_start]').datetimepicker({
-            format:'Y/m/d',
-            disabledDates: dates_disabled,
-            onShow:function( ct ){
-                this.setOptions({
-                    maxDate:jQuery('#datetimepicker_end').val()?jQuery('#datetimepicker_end').val():false
-                })
+
+        rentings_id = $(this).data('rentings_id');
+        $('input[name=renting_id]').val(rentings_id);
+
+        $.ajax({
+            type: "POST",
+            url: '<?= $this->Url->build([
+                'controller' => 'Rentings',
+                'action' => 'dates'
+            ]) ?>',
+            data: {
+                id : rentings_id
             },
-            timepicker:false
+            success: function (response) {
+                if(response.status === "success") {
+                    dates_disabled = response.dates;
+                    dates_disabled = dates_disabled.replace(/\\/g, '');
+
+                    jQuery('input[id=datetimepicker_start]').datetimepicker({
+                        format:'Y/m/d',
+                        disabledDates: dates_disabled,
+                        onShow:function( ct ){
+                            this.setOptions({
+                                maxDate:jQuery('#datetimepicker_end').val()?jQuery('#datetimepicker_end').val():false
+                            })
+                        },
+                        timepicker:false
+                    });
+                    jQuery('input[id=datetimepicker_end]').datetimepicker({
+                        format:'Y/m/d',
+                        disabledDates: dates_disabled,
+                        onShow:function( ct ){
+                            this.setOptions({
+                                minDate:jQuery('#datetimepicker_start').val()?jQuery('#datetimepicker_start').val():false
+                            })
+                        },
+                        timepicker:false
+                    });
+                } else {
+                    // do something with response.message or whatever other data on error
+                    console.log('error');
+                }
+            }
         });
-        jQuery('input[id=datetimepicker_end]').datetimepicker({
-            format:'Y/m/d',
-            onShow:function( ct ){
-                this.setOptions({
-                    minDate:jQuery('#datetimepicker_start').val()?jQuery('#datetimepicker_start').val():false
-                })
-            },
-            timepicker:false
-        });
-        id = $(this).data('rentings_id');
-        $('input[name=renting_id]').val(id);
+
+//        dates_disabled = ['2017/06/01', '2017/06/02', '2017/06/03', '2017/06/04', '2017/06/05'];
+
     });
 
 
